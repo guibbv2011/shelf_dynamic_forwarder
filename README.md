@@ -1,7 +1,6 @@
 # shelf_dynamic_forwarder
 
-[![Pub](https://img.shields.io/pub/v/shelf_dynamic_forwarder.svg)](https://pub.dev/packages/shelf_dynamic_forwarder) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Dart](https://img.shields.io/badge/Dart-3.0-blue.svg)](https://dart.dev/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![Pub](https://img.shields.io/pub/v/shelf_dynamic_forwarder.svg)](https://pub.dev/packages/shelf_dynamic_forwarder) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Dart](https://img.shields.io/badge/Dart-3.0-blue.svg)](https://dart.dev/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/guibbv2011/shelf_dynamic_forwarder/pulls)
 
 A utility package for Dart's [Shelf](https://pub.dev/packages/shelf) framework that simplifies dynamic route composition and forwarding.
 
