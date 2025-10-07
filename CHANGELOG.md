@@ -1,4 +1,4 @@
-## 1.0.2 
+## 1.1.0 
 * **Add delete feature:** Now we can delete a single file or the entire index of files
 
 ## 1.0.1
