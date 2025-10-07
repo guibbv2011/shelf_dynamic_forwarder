@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_dynamic_forwarder/shelf_dynamic_forwarder.dart';
@@ -16,7 +14,27 @@ Router get filenamesRequest {
 
 Router get fileRequest {
   final handler = Router();
-  handler.get('/file', (Request req) async {
+  handler.post('/file', (Request req) async {
+    // Your logic code here..
+    return Response.ok('');
+  });
+  return handler;
+}
+
+Router get deleteFileRequest {
+  final handler = Router();
+  handler.delete('/deleteFile', (Request req) async {
+    final file = req.headers['x-path'];
+    // Your logic code here..
+    return Response.ok('');
+  });
+  return handler;
+}
+
+Router get deleteIndexRequest {
+  final handler = Router();
+  handler.delete('/deleteIndex', (Request req) async {
+    final index = req.headers['x-index'];
     // Your logic code here..
     return Response.ok('');
   });
@@ -24,6 +42,8 @@ Router get fileRequest {
 }
 
 final Map<String, Handler> dynamicRoutes = {
+  'deleteIndex': deleteIndexRequest,
+  'deleteFile': deleteFileRequest,
   'filenames': filenamesRequest,
   '.*': fileRequest,
 };
@@ -38,11 +58,6 @@ Handler get router {
 }
 
 void main() async {
-  bool dir = await Directory('./assets').exists();
-  if (!dir) {
-    await Directory('./assets').create();
-  }
-
   final handler =
       const Pipeline().addMiddleware(logRequests()).addHandler(router);
 
