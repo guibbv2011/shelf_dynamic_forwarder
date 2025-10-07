@@ -21,7 +21,7 @@ Add `shelf_dynamic_forwarder` to your `pubspec.yaml`:
 dependencies:
   shelf: ^1.4.0
   shelf_router: ^1.1.0
-  shelf_dynamic_forwarder: ^1.1.0
+  shelf_dynamic_forwarder: ^1.1.1
 ```
 
 Then run:
