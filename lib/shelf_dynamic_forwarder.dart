@@ -1,6 +1,9 @@
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
+const String _defaultFileKey = '.*';
+const String _defaultDeleteFileKey = 'deleteFile';
+
 /// A utility to create a shelf_router handler that forwards requests
 /// based on dynamic path segments, rewriting the URI for child routers.
 ///
@@ -9,17 +12,13 @@ import 'package:shelf_router/shelf_router.dart';
 /// 2. The Request URI is rewritten to an absolute, isolated path (e.g., /filenames),
 ///    allowing child routers to match against their base paths.
 ///
-/// [routePattern]: The full dynamic pattern to capture, e.g., '/<p1>/<p2>/<path|.*>'.
+/// [routePattern]: The full dynamic pattern to capture, e.g., /<p1>/<p2>/<path|.*>.
 ///                 It MUST end with a capturing group that will be used for switching
 ///                 (defaulting to 'path', but can be overridden).
 /// [routes]: A map where the key is the string value of the final path segment
 ///           (e.g., 'filenames') and the value is the corresponding [Handler].
 /// [pathSegmentKey]: The name of the capturing group in [routePattern] used for
 ///                   switching between handlers (default: 'path').
-
-const String _defaultFileKey = '.*';
-const String _defaultDeleteFileKey = 'deleteFile';
-
 Handler createDynamicRouter({
   required String routePattern,
   required Map<String, Handler> routes,
