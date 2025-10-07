@@ -22,7 +22,7 @@ Add `shelf_dynamic_forwarder` to your `pubspec.yaml`:
 dependencies:
   shelf: ^1.4.0
   shelf_router: ^1.1.0
-  shelf_dynamic_forwarder: ^1.0.0
+  shelf_dynamic_forwarder: ^1.1.0
 ```
 
 Then run:
@@ -75,8 +75,6 @@ Router get deleteFileRequest {
   });
   return handler;
 }
-
-
 ```
 
 ### 2. Configure the Dynamic Router
@@ -116,19 +114,23 @@ void main() {
 }
 ```
 
-**Example Request**: Requesting `/api/user1/42/filenames` will now hit `filenamesRequest()`!
-
-### 🔧 Dynamic Parameters
+## 🔧 Dynamic Parameters
 
 The parameters captured in the `routePattern` (`<adminId>`, `<index>`) are automatically available in the child handler's request headers as `x-adminId` and `x-index`.
 
-## 📖 Example
+### 📖 Example
+
+**filenames Request**: Requesting `curl -X GET http://localhost:8080/api/user1/42/filenames` will now hit `filenamesRequest()`!
+
+_**deleteFile Request Requesting**_ `curl -X DELETE http://localhost:8080/api/user/index/deleteFile/file.*` will now hit `deleteFileRequest()`!
+
+**or**
+
+_**To delete the entire index with files**_ `curl -X DELETE http://localhost:8080/api/user/index/deleteIndex`
 
 For a full working example, check out the [example](example/) directory in the repository.
 
 ## 🤝 Contributing
-
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 1. Fork the project.
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
@@ -148,4 +150,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 > **⭐ Star this repo if you found it useful!**  
-> **💬 Have questions? Open an [issue](https://github.com/yourusername/shelf_dynamic_forwarder/issues/new) or join the discussion.**
+> **💬 Have questions? Open an [issue](https://github.com/guibbv2011/shelf_dynamic_forwarder/issues) or join the discussion.**
