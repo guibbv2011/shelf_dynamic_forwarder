@@ -18,6 +18,7 @@ import 'package:shelf_router/shelf_router.dart';
 ///                   switching between handlers (default: 'path').
 
 const String _defaultFileKey = '.*';
+const String _defaultDeleteFileKey = 'deleteFile';
 
 Handler createDynamicRouter({
   required String routePattern,
@@ -31,15 +32,18 @@ Handler createDynamicRouter({
     final routeParams = request.params;
 
     // 1. Get the path segment used for internal routing switch
-    final pathSegment = routeParams[pathSegmentKey];
+    var pathSegment = routeParams[pathSegmentKey];
     if (pathSegment == null || pathSegment.isEmpty) {
       return Response.badRequest(
           body: 'Missing required path segment: $pathSegmentKey');
     }
 
     Handler? handler;
-    final isFile = pathSegment.contains('.');
-    if (isFile) {
+
+    if (pathSegment.contains('deleteFile/') && pathSegment.contains('.')) {
+      handler = routes[_defaultDeleteFileKey];
+      pathSegment = pathSegment.split('/').elementAt(0);
+    } else if (pathSegment.contains('.')) {
       handler = routes[_defaultFileKey];
     } else {
       handler = routes[pathSegment];
@@ -51,6 +55,9 @@ Handler createDynamicRouter({
     };
 
     routeParams.forEach((key, value) {
+      if (key == 'path' && value.contains('deleteFile/')) {
+        value = value.substring('deleteFile/'.length);
+      }
       newHeaders['x-$key'] = value;
     });
 

@@ -1,6 +1,7 @@
 # shelf_dynamic_forwarder
 
-[![Pub](https://img.shields.io/pub/v/shelf_dynamic_forwarder.svg)](https://pub.dev/packages/shelf_dynamic_forwarder) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Dart](https://img.shields.io/badge/Dart-3.0-blue.svg)](https://dart.dev/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![Pub](https://img.shields.io/pub/v/shelf_dynamic_forwarder.svg)](https://pub.dev/packages/shelf_dynamic_forwarder) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Dart](https://img.shields.io/badge/Dart-3.0-blue.svg)](https://dart.dev/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 A utility package for Dart's [Shelf](https://pub.dev/packages/shelf) framework that simplifies dynamic route composition and forwarding.
 
@@ -63,6 +64,19 @@ Router get postMediaRequest {
   });
   return handler;
 }
+
+Router get deleteFileRequest {
+  final handler = Router();
+  handler.delete('/deleteFile', (Request req) {
+    // Access forwarded parameters via headers
+    final file = req.headers['x-path'] ?? 'N/A';
+    // Add your logic code here...
+    return Response.ok('file: $file');
+  });
+  return handler;
+}
+
+
 ```
 
 ### 2. Configure the Dynamic Router
@@ -75,6 +89,7 @@ import 'package:shelf_dynamic_forwarder/shelf_dynamic_forwarder.dart';
 // 1. Define the routes map: Path Segment -> Handler
 final Map<String, Handler> dynamicRoutes = {
   // Add other handlers here...
+  'deleteFile': deleteFileRequest, // default name to delete file
   'filenames': filenamesRequest,
   'media': postMediaRequest, 
 };
