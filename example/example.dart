@@ -26,7 +26,7 @@ Router get deleteFileRequest {
   handler.delete('/deleteFile', (Request req) async {
     final file = req.headers['x-path'];
     // Your logic code here..
-    return Response.ok('');
+    return Response.ok('... $file');
   });
   return handler;
 }
@@ -36,7 +36,7 @@ Router get deleteIndexRequest {
   handler.delete('/deleteIndex', (Request req) async {
     final index = req.headers['x-index'];
     // Your logic code here..
-    return Response.ok('');
+    return Response.ok('... $index');
   });
   return handler;
 }
