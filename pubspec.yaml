@@ -2,7 +2,6 @@ name: shelf_dynamic_forwarder
 version: 1.1.2
 description: A utility for dynamic router composition in Dart's shelf framework, enabling clean forwarding with path segment rewriting.
 homepage: https://github.com/guibbv2011/shelf_dynamic_forwarder
-to_publish: none
 
 environment:
   sdk: '^3.0.0'
