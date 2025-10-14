@@ -1,3 +1,6 @@
+## 1.1.2
+* After integrating a delete feature the pathSegment was missing in check file
+returning a null and resulting Route not found.
 
 ## 1.1.1
 * Remove warning on example.dart

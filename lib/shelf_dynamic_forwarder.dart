@@ -42,8 +42,11 @@ Handler createDynamicRouter({
     if (pathSegment.contains('deleteFile/') && pathSegment.contains('.')) {
       handler = routes[_defaultDeleteFileKey];
       pathSegment = pathSegment.split('/').elementAt(0);
-    } else if (pathSegment.contains('.')) {
+    }
+
+    if (pathSegment.contains('.')) {
       handler = routes[_defaultFileKey];
+      pathSegment = _defaultFileKey;
     } else {
       handler = routes[pathSegment];
     }
