@@ -12,7 +12,7 @@ const String _defaultDeleteFileKey = 'deleteFile';
 /// 2. The Request URI is rewritten to an absolute, isolated path (e.g., /filenames),
 ///    allowing child routers to match against their base paths.
 ///
-/// [routePattern]: The full dynamic pattern to capture, e.g., /<p1>/<p2>/<path|.*>.
+/// [routePattern]: The full dynamic pattern to capture, e.g., `/<p1>/<p2>/<path|.*>`.
 ///                 It MUST end with a capturing group that will be used for switching
 ///                 (defaulting to 'path', but can be overridden).
 /// [routes]: A map where the key is the string value of the final path segment
@@ -84,7 +84,7 @@ Handler createDynamicRouter({
       request.method,
       newUri,
       headers: newHeaders,
-      body: await request.read(),
+      body: request.read(),
       context: request.context,
     );
 
